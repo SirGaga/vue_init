@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+	<button>按钮6</button>
+	<script type="text/javascript">
+		// 1.变量作用域：变量在什么范围内是可用的
+		// name 在这两个代码中都可以使用
+
+		// {
+		// 	var name = 'why';
+		// 	console.log(name);
+		// }
+
+		// console.log(name);
+		// 这样会引起的问题：
+		// var func ;
+		// if (true) {
+		// 	var name = 'why';
+
+		// 	func = function() {
+		// 		console.log(name);
+		// 	}
+		// 	//func();
+		// }
+		// //console.log(name);
+		// func();
+		// 在别的地方调用前如果name被重新赋值了就不是想要调用的代码了
+		// 没有块级作用域引发的问题： for的块级
+		// 但是闭包可以解决这个问题，因为函数是一个作用域
+		// var btns = document.getElementsByTagName('button');
+		// for (var i = 0; i < btns.length; i++) {
+		// 	console.log('called');
+		// 	btns[i].addEventListener('click',function(){
+		// 		console.log('第' + i + '个按钮被点击');
+		// 	});
+		// 	// 闭包
+		// 	(function(i){
+		// 		btns[i].addEventListener('click',function(){
+		// 		console.log('第' + i + '个按钮被点击');
+		// 	})(i);
+		// }
+		// ES5之前因为if和for都没有块级作用域的概念，所以在很多时候，我们必须借助于function的作用域来解决应用外面变量的问题
+		// ES6中加入了let，它是有if和for的块级作用域
+		// const btns = document.getElementsByTagName('button');
+		// for (let i = 0; i < btns.length; i++) {
+		// 	console.log('called');
+		// 	btns[i].addEventListener('click',function(){
+		// 		console.log('第' + (i+1) + '个按钮被点击');
+		// 	});
+			
+		// }
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个Vue页面</title>
+
+</head>
+<body>
+	<div id="app">
+		<!-- 事件调用的方法没有参数 -->
+		<button @click='btn1Click()'>按钮1</button>
+		<button @click='btn1Click'>按钮1</button>
+
+        <!-- 在定义事件时，写函数时省略了小括号，但是方法本身需要一个参数的，这个时候，vue会默认将浏览器生成的event事件对象作为参数传入到方法  -->
+		<button @click = 'btn2Click("123")'>按钮2</button>
+		<button @click = 'btn2Click'>按钮2</button>
+        <!-- 方法定义时，我们需要event对象，同时也需要其他参数 -->
+        <!-- 在调用时，如何手动的获取到浏览器产生的event对象: $event -->
+        <button @click = 'btn3Click(123,$event)'>按钮3</button>
+        <button @click = 'btn3Click'>按钮3</button>
+	</div>
+	<script src="../js/vue.js"></script>
+    <script type="text/javascript">
+    	const app = new Vue({
+    		el: '#app',
+    		data: {
+    			counter: 0
+    		},
+    		methods: {
+                btn1Click(){
+                    console.log('111111');
+                },
+                btn2Click(event){
+                    console.log('----'+event);
+                },
+                btn3Click(abc,event){
+                    console.log(abc);
+                    console.log(event);
+                },
+    			increament(){
+    				console.log('increament 被执行');
+    				this.counter++;
+    			},
+    			subtraction(){
+    				console.log('subtraction 被执行');
+    				this.counter--;
+    			}
+    		}
+    	})
+    </script>
+</body>
+</html>

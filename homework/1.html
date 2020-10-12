@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>作业1</title>
+	<style type="text/css">
+		.active {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li @click="changeColor(index)" v-for="(movie,index) in movies" :class="{active: currentIndex === index?true:false}">{{movie}}</li>
+		</ul>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '#app',
+			data: {
+				movies: ['舒克和贝塔','海尔兄弟','大闹天宫','蓝精灵'],
+				isActive: false,
+				currentIndex: 0
+			},
+			methods: {
+				changeColor: function(index){
+					console.log(index);
+					this.currentIndex = index;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个Vue页面</title>
+
+</head>
+<body>
+	<div id="app">
+		<h2 v-if="isShow">{{counter}}</h2>
+    <h1 v-else="isShow">isShow为false时，显示我</h1>
+	</div>
+	<script src="../js/vue.js"></script>
+    <script type="text/javascript">
+    	const app = new Vue({
+    		el: '#app',
+    		data: {
+    			counter: 0,
+          isShow: true
+    		},
+    		methods: {
+    			
+    		}
+    	})
+    </script>
+</body>
+</html>

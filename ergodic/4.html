@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>测试</title>
+</head>
+<body>
+  <div id="app">
+    
+    <ul>
+      <li v-for="item in letters" >{{item}}</li>
+    </ul>
+    <button @click="btnClick">按钮</button>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script type="text/javascript">
+      const app = new Vue({
+        el: '#app',
+        data: {
+          letters: ['A','B','C','D','E','F',]
+        },
+        methods: {
+          btnClick(){
+            // 1.push方法
+            // this.letters.push('aaa');
+            // 2.通过索引值改变数组元素
+            // this.letters[0] = 'bb';
+            // pop(); 删除数组中的最后一个元素
+            // this.letters.pop();
+            // shift(); 删除数组中的第一个元素
+            // this.letters.shift();
+            // unshift(); 在数组最前面添加元素
+            // this.letters.unshift('ll');
+            // splice(); 方法向/从数组中添加/删除项目，然后返回被删除的项目。
+            // arrayObject.splice(index,howmany,item1,.....,itemX)
+            // this.letters.splice(2,0,'F','G');
+            // sort();
+            // this.letters.sort();
+            // reverse();
+            // this.letters.reverse();
+            //set(要修改的对象，索引值，修改后的值)
+            Vue.set(this.letters,0,'bbbb');
+          }
+        }
+      })
+    </script>
+</body>
+</html>
