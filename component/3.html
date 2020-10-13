@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>v-component</title>
+</head>
+<body>
+	<div id="app">
+		<cpn2></cpn2>
+
+	</div>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" >
+		// 构建全局组件
+		const cpnc1 = Vue.extend({
+			template: `<div><h2>我是标题</h2><p>我是内容1</p></div>`
+		});
+		// 注册父子组件
+		const cpnc2 = Vue.extend({
+			template: `<div><h2>我是标题2</h2><p>我是内容2</p><cpn1></cpn1></div>`,
+			components: {
+				cpn1: cpnc1
+			}
+		});
+		
+		// root组件
+		const app = new Vue({
+			el: '#app',
+			data: {
+				message: '你好啊',
+				age: 36,
+				name: '香蕉'
+			},
+			components: {
+				// 注册局部组件
+				cpn2: cpnc2
+			}
+		});
+	</script>
+</body>
+</html>

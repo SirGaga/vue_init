@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>v-component</title>
+</head>
+<body>
+	<div id="app">
+		<my-cpn></my-cpn>
+		
+	</div>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" >
+		// 构建全局组建
+		const cpnc = Vue.extend({
+			template: `<div><h2>我是标题</h2><p>我是内容1</p><p>我是内容2</p></div>`
+		});
+		// Vue.component('my-cpn',cpnc)
+		const app = new Vue({
+			el: '#app',
+			data: {
+				message: '你好啊',
+				age: 36,
+				name: '香蕉'
+			},
+			components: {
+				// 注册局部组建
+				cpn: cpnc
+			}
+		});
+	</script>
+</body>
+</html>
