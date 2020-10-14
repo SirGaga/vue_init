@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>v-component</title>
+</head>
+<body>
+
+	<div id="app">
+		<cpn @itemclick="cpnClick"></cpn>
+	</div>
+
+	<template id="cpn">
+		<div>
+			<button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+		</div>
+	</template>
+	
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" >
+		// 父传子：props
+		const cpn = {
+			template: '#cpn',
+			props: {
+				cinfo: {
+					type: Object,
+					default() {
+						return {}; 
+					}
+				}
+			},
+			data() {
+				return {
+					categories: [
+					{id: 'aaa',name: '热门推荐'},
+					{id: 'bbb',name: '手机数码'},
+					{id: 'ccc',name: '家用电器'},
+					{id: 'ddd',name: '电脑办公'},
+					{id: 'eee',name: '箱包手表'}
+					]
+				}
+			},
+			methods: {
+				btnClick(item) {
+					this.$emit('itemclick',item);
+				}
+			}
+		};
+		const app = new Vue({
+			el: '#app',
+			data: {
+				info: {
+					name: 'zhang',
+					age: 18,
+					height: 1.88
+				}
+			},
+			components: {
+				cpn
+			},
+			methods: {
+				cpnClick(item) {
+					console.log("parent..",item);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

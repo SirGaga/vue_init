@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>v-component</title>
+</head>
+<body>
+	<div id="app">
+		<!-- <cpn v-bind:cmovies="movies" :cmessage="message"></cpn> -->
+		<!-- <cpn cmovies="movies" cmessage="message"></cpn> -->
+		<cpn :cmessage="message" :cmovies="movies"></cpn>
+	</div>
+	<template id="cpn">
+		<div>
+			<ul>
+				<li v-for="item in cmovies">{{item}}</li>
+			</ul>
+			<h2>{{cmessage}}</h2>
+		</div>
+	</template>
+	
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" >
+		// 父传子：props
+		const cpn = {
+			template: '#cpn',
+			// props: ['cmovies','cmessage'],
+			props: {
+				// 支持的数据类型
+				// String,Number,Boolean,Array,Object,Date,Function,Symbol
+				// cmovies: Array,
+				// cmessage: String,
+				// 提供默认值,和必传属性
+				cmessage: {
+					type:String,
+					default: '你好啊',
+					required: true
+				},
+				// 类型是对象或者数组时，默认值必须是一个函数
+				cmovies: {
+					type: Array,
+					default() {
+						return [];
+					}
+				}
+			},
+			data() {
+				return {
+
+				}
+			}
+		};
+		const app = new Vue({
+			el: '#app',
+			data: {
+				message: '你好啊',
+				movies: ['海王','老友记','海尔兄弟']
+				
+			},
+			components: {
+				cpn
+			}
+		});
+	</script>
+</body>
+</html>
