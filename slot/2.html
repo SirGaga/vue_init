@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>v-component</title>
+</head>
+<body>
+
+	<div id="app">
+		<cpn><span slot="center">标题</span></cpn>
+		<cpn><button slot="left">返回</button></cpn>
+	</div>
+
+	<template id="cpn">
+		<div>
+			<slot name="left"><span>左边</span></slot>
+			<slot name="center"><span>中间</span></slot>
+			<slot name="right"><span>右边</span></slot>
+		</div>
+	</template>
+	
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" >
+		const cpn = {
+			template: '#cpn',
+			data() {
+				return {
+					name: '我是子组件'
+				}
+			},
+			methods: {
+			}
+			
+		};
+		const app = new Vue({
+			el: '#app',
+			data: {
+				num1: 1,
+				num2: 0
+			},
+			components: {
+				cpn
+			},
+		});
+	</script>
+</body>
+</html>
